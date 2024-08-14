@@ -2,7 +2,7 @@
 
 public class AppUser
 {
-    public int MyProperty { get; set; }
+    public int Id { get; set; }
 
     public required string UserName { get; set; }
 }
