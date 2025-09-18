@@ -1,6 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
+import { lastValueFrom } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -9,15 +10,19 @@ import { HttpClient } from "@angular/common/http";
     styleUrl: './app.component.less'
 })
 export class AppComponent implements OnInit{
-  http = inject(HttpClient);
-  title = 'client';
-  users: any;
+  private http = inject(HttpClient);
+  protected title = 'client';
+  protected users = signal<any>([]);
 
-  ngOnInit() {
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      next: response => { this.users = response },
-      error: error => { console.log(error) },
-      complete: () => console.log('Completed!'),
-    })
+  async ngOnInit() {
+    this.users.set(await this.getUsers());
+  }
+
+  async getUsers() {
+    try {
+      return lastValueFrom(this.http.get('http://localhost:5000/api/users'));
+    } catch (error) {
+      throw error;
+    }
   }
 }

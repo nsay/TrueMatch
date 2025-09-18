@@ -21,7 +21,7 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              //"zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "less",
@@ -34,7 +34,7 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
-              "src/styles.less"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -81,8 +81,8 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
-              "zone.js",
-              "zone.js/testing"
+              //"zone.js",
+              //"zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "less",
@@ -93,7 +93,7 @@
               }
             ],
             "styles": [
-              "src/styles.less"
+              "src/styles.css"
             ],
             "scripts": []
           }

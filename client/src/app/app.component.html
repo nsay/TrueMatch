@@ -1,9 +1,15 @@
-<h1>Hello</h1>
-
-<ul>
-  @for (user of users; track user.id) {
-    <li>
-      {{user.id}} - {{user.userName}}
-    </li>
-  }
-</ul>
+<div class="card bg-base-100 w-1/2 mx-auto p-10 mt-10 shadow-xl">
+  <h3 class="text-3xl text-red-500">
+    {{title}}
+  </h3>
+  <ul class="list">
+    @for (user of users(); track user.id) {
+      <li class="list-row items-center">
+        <img src="/user.jpg" alt="user avatar" class="size-12 rounded-box">
+        <div>
+          {{user.id}} - {{user.displayName}}
+        </div>
+      </li>
+    }
+  </ul>
+</div>
